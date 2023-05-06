@@ -1,9 +1,11 @@
 # ATTACKVMS
 ## Windows
 
-{::comment}
+<!----
+
 This script is based on https://github.com/ZeroPointSecurity/RTOVMSetup but modified for working with OSEP with local windows dev
-{:/comment}
+
+--->
 
 ### 1. Install Boxstarter
 ```
