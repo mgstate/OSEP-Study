@@ -13,10 +13,10 @@ This script is based on https://github.com/ZeroPointSecurity/RTOVMSetup but modi
 ### 2. Install Boxstarter Package
 ```
 $Cred = Get-Credential $env:USERNAME
-Install-BoxstarterPackage -PackageName https://raw.githubusercontent.com//master/windows-choco.choco -Credential $Cred
+Install-BoxstarterPackage -PackageName https://raw.githubusercontent.com/EvilEnigma/OSEP-Study/master/windows-choco.choco -Credential $Cred
 ```
 
 ## Kali
 ```
-kali@kali:~$ curl -sS https://raw.githubusercontent.com//master/kaliprep.sh | sudo bash -
+kali@kali:~$ curl -sS https://raw.githubusercontent.com/EvilEnigma/OSEP-Study/master/AttackVMS/AttackVMS/kaliprep.sh | sudo bash -
 ```
