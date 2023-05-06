@@ -1,6 +1,6 @@
 # ATTACKVMS
 
-Setting up AttackVM's locally based on RTOVM scripts
+Setting up AttackVM's locally based on ZeroPoint Security RTOVM scripts https[:]//github.com/ZeroPointSecurity/RTOVMSetup 
 
 ## Windows
 
