@@ -11,6 +11,7 @@ Add-MpPreference -ExclusionPath "C:\payloads\"
 Add-MpPreference -ExclusionPath "C:\tools\"
 Set-MpPreference -MAPSReporting Disabled
 Set-MpPreference -SubmitSamplesConsent NeverSend
+MpCmdRun.exe -RemoveDefinitions -All
 
 # Packages
 choco feature enable -n allowGlobalConfirmation
