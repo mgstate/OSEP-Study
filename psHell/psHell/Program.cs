@@ -59,21 +59,13 @@ namespace psbypass
             return 0;
 
         }
-        public static IEnumerable<int> PatternAt(byte[] source, byte[] pattern)
-        {
-            for (int i = 0; i < source.Length; i++)
-            {
-                if (source.Skip(i).Take(pattern.Length).SequenceEqual(pattern))
-                {
-                    yield return i;
-                }
-            }
-        }
+
 
         private static void runCommand(PowerShell ps, string cmd)
         {
             ps.AddScript(cmd);
             ps.AddCommand("Out-String");
+
             var results = ps.Invoke();
 
             if (ps.Streams.Error.Count > 0)
@@ -92,17 +84,6 @@ namespace psbypass
             }
 
             ps.Commands.Clear();
-        }
-
-        private static StringBuilder buildOutput(Collection<PSObject> results)
-        {
-            StringBuilder stringBuilder = new StringBuilder();
-            foreach (PSObject obj in results)
-            {
-                stringBuilder.Append(obj);
-            }
-
-            return stringBuilder;
         }
 
         public static void Main()
