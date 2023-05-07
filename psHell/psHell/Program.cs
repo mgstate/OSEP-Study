@@ -70,40 +70,27 @@ namespace psbypass
             }
         }
 
-        //https[:]//github.com/Octoberfest7/OSEP-Tools/blob/8eb484a3f87e9b6a42c9dcc5818f67e5478bfb8f/altbypass/Program.cs#L80
         private static void runCommand(PowerShell ps, string cmd)
         {
-            string getError = "get-variable -value -name Error | Format-Table -Wrap -AutoSize";
             ps.AddScript(cmd);
             ps.AddCommand("Out-String");
+            var results = ps.Invoke();
 
-            try
+            if (ps.Streams.Error.Count > 0)
             {
-                Collection<PSObject> results = ps.Invoke();
-                Console.WriteLine(buildOutput(results).ToString().Trim());
-
-                ps.Commands.Clear();
-                ps.AddScript(getError);
-                ps.AddCommand("Out-String");
-                results = ps.Invoke();
-                StringBuilder stringBuilder = buildOutput(results);
-
-
-                if (!String.Equals(stringBuilder.ToString().Trim(), ""))
+                foreach (var error in ps.Streams.Error)
                 {
-                    Console.WriteLine(stringBuilder.ToString().Trim());
-
-
-                    ps.Commands.Clear();
-                    ps.AddScript("$error.Clear()");
-                    ps.Invoke();
+                    Console.WriteLine(error.ToString());
                 }
-
             }
-            catch (Exception e)
+            else
             {
-                Console.WriteLine(e.ToString());
+                foreach (var result in results)
+                {
+                    Console.WriteLine(result.ToString());
+                }
             }
+
             ps.Commands.Clear();
         }
 
@@ -136,11 +123,12 @@ namespace psbypass
                     while (true)
                     {
                         Console.Write("psHell " + Directory.GetCurrentDirectory() + ">");
+                        string cmd = Console.ReadLine();
 
-                        if (Console.ReadLine().Equals("exit", StringComparison.OrdinalIgnoreCase))
+                        if (cmd.Equals("exit", StringComparison.OrdinalIgnoreCase))
                             break;
 
-                        runCommand(ps, Console.ReadLine());
+                        runCommand(ps, cmd);
                     }
                 }
             }
