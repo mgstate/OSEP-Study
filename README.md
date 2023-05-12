@@ -23,6 +23,6 @@ An interactive custom powershell runspace escape from ApplicationWhiteslisting +
 ### winHTTPServer ###
 A portable HTTP Server to be executed within a folder to server files within that file path as a directory listing.
 
-### Pinyata ###
-Lateral movement tool
+### PipeDream ###
+A lateral movement toolkit has two binaries pipe.exe (server) and dream (client).. uses named pipe to communicate between systems.
 
