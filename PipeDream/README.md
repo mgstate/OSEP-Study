@@ -1,6 +1,6 @@
 ## PipeDream ##
 
-A tool that is uses namedpipe for communication between client and server. The pipe is the server, dream is the client application. 
+A tool that uses namedpipe for communication between client and server. The pipe is the server, dream is the client application. 
 
 You will need to execute Pipe.exe in someway and it will listen on SMB Named pipe, then on a workstation within the same LAN execute dream.exe <IP address> which will allow executing commands were pipe is listening.
 
